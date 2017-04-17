@@ -4,6 +4,8 @@ import {Meteor} from 'meteor/meteor';
 import {Tracker} from 'meteor/tracker';
 
 import {Players} from './../imports/api/players';
+import TitleBar from './../imports/ui/TitleBar';
+import AddPlayer from './../imports/ui/AddPlayer'
 
 const renderPlayers = (playersList) => {
   // let numbers = [{val: 5}, {val: 2}, {val: 3}];
@@ -39,22 +41,15 @@ const handleSubmit = (e) => {
     });
   }
 };
-
 Meteor.startup(() => {
   Tracker.autorun(() => {
         let players = Players.find().fetch();
         let title = 'Score Keep';
-        let name = 'Anthony';
         let jsx = (
           <div>
-            <h1> {title} </h1>
-            <p>Hello {name}</p>
-            <p>second p </p>
+            <TitleBar title={title}/>
             {renderPlayers(players)}
-            <form onSubmit={handleSubmit}>
-              <input type="text" name="playerName" placeholder="Player name"/>
-              <button>Add Player</button>
-            </form>
+            <AddPlayer/>
           </div>
         );
         ReactDom.render(jsx, document.getElementById('app'));
