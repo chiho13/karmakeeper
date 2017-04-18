@@ -5,51 +5,22 @@ import {Tracker} from 'meteor/tracker';
 
 import {Players} from './../imports/api/players';
 import TitleBar from './../imports/ui/TitleBar';
-import AddPlayer from './../imports/ui/AddPlayer'
+import AddPlayer from './../imports/ui/AddPlayer';
+import Player from './../imports/ui/Player';
+import PlayerList from './../imports/ui/PlayerList';
 
-const renderPlayers = (playersList) => {
-  // let numbers = [{val: 5}, {val: 2}, {val: 3}];
 
-  return playersList.map((player) => {
-      return (
-        <div>
-          <p key={player._id} >
-          {player.name} has {player.score} points
-          <button onClick={() => Players.update(player._id, {
-            $inc: {score: -1}
-          })}> -1</button>
-          <button onClick={() => Players.update(player._id, {
-            $inc: {score: 1}
-          })}> +1</button>
-          <button onClick={() => Players.remove(player._id)}>X</button>
-          </p>
-        </div>
-      );
-  });
-};
-
-const handleSubmit = (e) => {
-  e.preventDefault();
-  let playerName = e.target.playerName.value;
-
-  if(playerName) {
-    e.target.playerName.value = '';
-    // players insert
-    Players.insert({
-      name: playerName,
-      score: 0
-    });
-  }
-};
 Meteor.startup(() => {
   Tracker.autorun(() => {
         let players = Players.find().fetch();
         let title = 'Score Keep';
+        let subtitle = 'Created by Anthony';
         let jsx = (
           <div>
-            <TitleBar title={title}/>
+            <TitleBar title={title} subtitle={subtitle}/>
             {renderPlayers(players)}
-            <AddPlayer/>
+            <PlayerList players={players}
+            <AddPlayer score={10}/>
           </div>
         );
         ReactDom.render(jsx, document.getElementById('app'));
