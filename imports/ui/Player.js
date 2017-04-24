@@ -18,10 +18,10 @@ export default class Player extends React.Component {
               <div className="player__actions">
                 <button className="button button--round" onClick={() => Players.update(this.props.player._id, {
                   $inc: {score: -1}
-                })}> -1</button>
+                })}> -</button>
               <button className="button button--round" onClick={() => Players.update(this.props.player._id, {
                   $inc: {score: 1}
-                })}> +1</button>
+                })}> +</button>
               <button className="button button--round" onClick={() => Players.remove(this.props.player._id)}>X</button>
               </div>
             </div>

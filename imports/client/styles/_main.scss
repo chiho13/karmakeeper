@@ -1,22 +1,20 @@
 /* CSS declarations go here */
 $green: #e4ede0;
-$green-dark: darken($green, 15%);
+$green-alt: darken($green, 15%);
 
 $blue: #dfe7ed;
-$blue-dark: darken($blue, 15%);
+$blue-alt: darken($blue, 15%);
 
 $red: #eddfdf;
-$red-dark: darken($red, 15%);
+$red-alt: darken($red, 15%);
 
 
-@import './components/titleBar';
+@import './components/title-bar';
 @import './components/wrapper';
 @import './components/item';
 @import './components/button';
 @import './components/form';
 @import './components/player';
-
-
 
 
 * {
