@@ -14,7 +14,7 @@ Meteor.startup(() => {
       }
     }).fetch();
     let positionedPlayers = calculatePlayerPositions(players);
-    let title = 'Score Keep';
+    let title = 'Karma Keeper';
 
     ReactDOM.render(<App title={title} players={positionedPlayers}/>, document.getElementById('app'));
   });
